@@ -1,0 +1,29 @@
+book_categories
+id integer(100), pk, ai,
+name varchar(255),
+
+
+authors
+id integer(100), pk, ai,
+name varchar(255),
+address varchar(255),
+email varchar(255),
+phone varchar(255),
+image varchar(255)
+
+
+
+books
+id integer(100), pk, ai,
+name varchar(255),
+isbn varchar(255),
+published_date(date),
+publisher varchar(255),
+noofpages integer(10),
+image(varchar:255),
+category_id integer(100), fk->references(book_categories.id)
+
+book_images
+id integer(100), pk, ai,
+name varchar(255),
+book_id(100), fk->references books.id

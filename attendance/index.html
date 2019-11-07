@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>NARMIN Seminar | Attendance</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.ico">
+
+  <style type="text/css">
+    
+    footer.sticky-footer{ width: 100% !important; }
+    #wrapper{ padding-top: 13.5%; }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width: 12% !important;
+      text-align: center; font-family: arial; margin-bottom: 1.4%; margin: 1% 2%;
+    }
+    .card:hover{ background-color: #dcf9d9}
+    .price { color: grey; font-size: 22px; }
+    .card button { border: none; outline: 0; padding: 12px; color: white; background-color: #000;
+      text-align: center; cursor: pointer; width: 100%; font-size: 18px;
+    }
+    .card button:hover { opacity: 0.7; }
+    /*.card h4{ margin-top: 4%; }*/
+    .card img{ padding: 6% 0; width: 100%; height: 270px; }
+    .card a:hover{ text-decoration: none; }
+    .card h4{ color: #1B5693; font-size: 24px; }
+
+    .category-container { padding: 1%; border: 1px solid #f5f0f0; margin-left: 0;margin-right: 0; display: flex;justify-content: space-between; }
+
+  </style>
+</head>
+
+<body id="page-top">
+    <style type="text/css">
+      .navbar{
+        background-color: #fff !important;
+      }
+      .navbar .row{ width: 100%; }
+      .navbar div:nth-child(2){
+        text-align: center; font-size: 36px; font-weight: bold; color: #424297;
+      }
+      .top-head-container{ position: fixed; z-index: 1000; width: 100%; }
+    </style>
+    <div class="top-head-container">
+      <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <div class="row">
+          <div class="col-sm-2">
+            <img src="images/logo.png" style="width: 170px">
+          </div>
+          <div class="col-sm-8">
+            National Association of Rural Minicipalities in Nepal<br>
+            <span>गाउँ पालिका राष्ट्रिय महासंघ नेपाल</span>
+          </div>
+          <div class="col-sm-2">
+            <img src="images/flag.webp" style="width: 92px; float: right;">
+          </div>
+        </div>
+      </nav>
+
+       <!-- Page Title and Breadcrumbs-->
+      <ol class="breadcrumb" style="background-color: #f5f6f7 !important; padding: 1%; margin-top: 0px; font-size: 40px !important; font-weight: bold; color: red;">
+          <li style="text-align: center !important; display: block; width: 100%;text-decoration: underline;">रेजिस्ट्रेसन</li>
+      </ol>
+    </div>
+
+  <div id="wrapper">  
+
+    <div id="content-wrapper" style="background-image: none">
+
+      <div class="container-fluid">
+        <div class="row col-sm-12 category-container">
+          <div class="card" id="1" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('ईश्वर चन्द्र पोखरेल', 1)">
+            <img src="images/1. Ishwor.jpg" alt="">
+            <h4>ईश्वर चन्द्र पोखरेल</h4>
+            <h5>( अध्यक्ष )</h5>
+          </div>
+          <div class="card" id="2" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('धावा लामा', 2)">
+              <img src="images/2.Dhawa.jpg" alt="">
+              <h4>धावा लामा</h4>
+              <h5>( उपाध्यक्ष )</h5>
+          </div>
+          <div class="card" id="3" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('विनोदराज तिमिल्सिना', 3)">
+              <img src="images/3.Binod.jpg" alt="">
+              <h4>विनोदराज तिमिल्सिना</h4>
+              <h5>( सचिव )</h5>
+          </div>
+          <div class="card" id="4" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('लक्ष्मी पौडेल', 4)">
+              <img src="images/4.Laxmi.jpg" alt="">
+              <h4>लक्ष्मी पौडेल</h4>
+              <h5>( सहसचिव )</h5>
+          </div>
+          <div class="card" id="5" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('जानुका सिंखडा', 5)">
+              <img src="images/5.Januka.jpg" alt="">
+              <h4>जानुका सिंखडा</h4>
+              <h5>( कोषाध्यक्ष )</h5>
+          </div>
+          <div class="card" id="6" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('पार्वति सुनुवार', 6)">
+              <img src="images/6.Parwati.jpg" alt="">
+              <h4>पार्वति सुनुवार</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="7" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('गुमानध्वज कुवर', 7)">
+              <img src="images/7.jpg" alt="">
+              <h4>गुमानध्वज कुवर</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="8" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('कमला तामाङ्ग', 8)">
+              <img src="images/8.Kamala.jpg" alt="">
+              <h4>कमला तामाङ्ग</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="9" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('खड्ग बहादुर सुनुवार', 9)">
+              <img src="images/9.Khadga.jpg" alt="">
+              <h4>खड्ग बहादुर सुनुवार</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="10" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('एकराज उप्रेति', 10)">
+              <img src="images/10.Ekraj.jpg" alt="">
+              <h4>एकराज उप्रेति</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="11" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('भवानी प्रसाद न्यौपाने', 11)">
+              <img src="images/11.Bhawani.jpg" alt="">
+              <h4>भवानी प्रसाद न्यौपाने</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="12" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('तारादेवी रिमाल', 12)">
+              <img src="images/12.Tara.jpg" alt="">
+              <h4>तारादेवी रिमाल</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="13" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('अनिता कुमारी राई', 13)">
+              <img src="images/13.Anita.jpg" alt="">
+              <h4>अनिता कुमारी राई</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="14" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('सिता खतिवडा लामा', 14)">
+              <img src="images/14.Sita.jpg" alt="">
+              <h4>सिता खतिवडा लामा</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="15" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('हरि दर्लाकोटी', 15)">
+              <img src="images/15.Hari.jpg" alt="">
+              <h4>हरि दर्लाकोटी</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="16" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('कर्ण बहादुर थापा', 16)">
+              <img src="images/16.Karna.jpg" alt="">
+              <h4>कर्ण बहादुर थापा</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="17" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('उर्मिला कार्कि बस्नेत', 17)">
+              <img src="images/17.Urmila.jpg" alt="">
+              <h4>उर्मिला कार्कि बस्नेत</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="18" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('महेश्वर काफ्ले', 18)">
+              <img src="images/18.Mahesh.jpg" alt="">
+              <h4>महेश्वर काफ्ले</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+          <div class="card" id="19" data-toggle="modal" data-target="#attendanceModal" onclick="sendName('योगेन्द्रसिंह तामाङ्ग', 19)">
+              <img src="images/19.Yobindra.jpg" alt="">
+              <h4>योगेन्द्रसिंह तामाङ्ग</h4>
+              <h5>( सदस्य )</h5>
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer" style="background-color: #469443 !important">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+            <span style="color: #e0f32c;font-size: 24px">Copyright © National Association of Rural Minicipalities in Nepal 2076</span>
+            </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="js/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin.min.js"></script>
+
+  <script type="text/javascript">
+    function sendName(name, id){
+      $('.modal-title').html('प्रदेश नम्बर ३ कार्यसमितिको नियमित बैठकमा <span style="color:red">' + name + '</span> ज्यु हजुरलाई स्वागत छ ! ');
+      $('#' + id).css('background-color', 'green');
+      $('#' + id).css('pointer-events', 'none');
+    }
+  </script>
+
+  <div class="modal fade" id="attendanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style="top: 20vh">
+        <div class="modal-dialog" role="document" style="min-width: 50% !important">
+            <div class="modal-content" style="padding: 5% 3%">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="text-align: center; width: 100%;
+                    color: #a1b107; font-weight: bold; font-size: 40px; /*text-shadow: 3px 3px*/">
+                      
+                    </h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center;font-size: 30px;font-family: fantasy;">
+                  National Association of Rural Minicipalities in Nepal<br>
+          <span>गाउँ पालिका राष्ट्रिय महासंघ नेपाल</span>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal" style="font-size: 25px;">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
