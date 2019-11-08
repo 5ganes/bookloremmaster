@@ -10722,7 +10722,7 @@ body {
     display: block;
     text-align: left;
     padding: 0.7rem 0.5rem;
-    width: 100%; background-color: #675329;
+    width: 100%; background-color: #cca95f; color: black
   }
   .sidebar .nav-item .nav-link:hover{ background-color: #836A34; box-shadow: 1px 1px 3px 3px gray; }
   .nav-item{ padding: 0 2%; margin: 2% 0; }
@@ -10930,9 +10930,10 @@ body.sidebar-toggled footer.sticky-footer {
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    text-align: center; font-family: arial; margin-bottom: 1.4%; margin: 1%; background-color: #F39A98;
+    text-align: center; font-family: arial; margin-bottom: 1.4%; margin: 1%; 
+    background-color: #fbc2c0;
 }
-.card:hover{ background-color: #E62722}
+.card:hover{ background-color: #f3a29f}
 .price { color: grey; font-size: 22px; }
 .card button { border: none; outline: 0; padding: 12px; color: white; background-color: #000;
   text-align: center; cursor: pointer; width: 100%; font-size: 18px;
