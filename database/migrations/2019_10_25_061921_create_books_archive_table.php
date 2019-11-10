@@ -17,6 +17,7 @@ class CreateBooksArchiveTable extends Migration
             $table->bigIncrements('id');
             $table->string('isbn')->nullable();
             $table->smallInteger('publishedYear');
+            $table->smallInteger('publishedMonth')->nullable();
             $table->string('publisher');
             $table->integer('noOfPages');
 

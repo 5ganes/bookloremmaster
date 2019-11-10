@@ -35,7 +35,7 @@
                             <th>SN</th>
                             <th>Name</th>
                             <th>ISBN</th>
-                            <th>Published Year</th>
+                            <th>Published Date</th>
                             @if(Auth::user()->type == 'admin') <th>Uploaded By</th> @endif
                             <th>Publish</th>
                             <th>Featured</th>
@@ -47,7 +47,7 @@
                             <th>SN</th>
                             <th>Name</th>
                             <th>ISBN</th>
-                            <th>Published Year</th>
+                            <th>Published Date</th>
                             @if(Auth::user()->type == 'admin') <th>Uploaded By</th> @endif
                             <th>Publish</th>
                             <th>Featured</th>
@@ -61,7 +61,12 @@
                                 <td>{{$sn++}}</td>
                                 <td>{{$book->name}}</td>
                                 <td>{{$book->isbn}}</td>
-                                <td>{{$book->publishedYear}}</td>
+                                <td>
+                                    {{$book->publishedYear}} 
+                                    @if(!empty($book->publishedMonth))
+                                        | {{getNepaliMonth($book->publishedMonth)}}
+                                    @endif
+                                </td>
                                 @if(Auth::user()->type == 'admin') <td>{{$book->userName}}</td> @endif
                                 <td>@if($book->publish == 1) Yes @else No @endif</td>
                                 <td>@if($book->featured == 1) Yes @else No @endif</td>

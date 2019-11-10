@@ -18,6 +18,7 @@ class CreateBooksTable extends Migration
             $table->string('name');
             $table->string('isbn')->nullable();
             $table->smallInteger('publishedYear');
+            $table->smallInteger('publishedMonth')->nullable();
             $table->string('publisher');
             $table->integer('noOfPages');
             $table->string('edition')->nullable();

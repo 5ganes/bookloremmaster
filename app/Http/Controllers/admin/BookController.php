@@ -48,12 +48,10 @@ class BookController extends Controller
     }
 
     function addBook(){
-        $currentNepaliYear = getCurrentNepaliYear();
     	$bookCatList = Category::where('publish', 1)->get();
         $authorList = Author::where('publish', 1)->get();
     	return view('admin.books.add')
     				->with(array(
-                        'currentNepaliYear' => $currentNepaliYear,
     					'bookCatList' => $bookCatList,
                         'authorList' => $authorList
     				));
@@ -115,6 +113,7 @@ class BookController extends Controller
             $saveBook->name = Input::get('name');
             $saveBook->isbn = Input::get('isbn');
             $saveBook->publishedYear = Input::get('publishedYear');
+            $saveBook->publishedMonth = Input::get('publishedMonth');
             $saveBook->publisher = Input::get('publisher');
             $saveBook->noOfPages = Input::get('noOfPages');
             $saveBook->edition = Input::get('edition');
@@ -148,8 +147,6 @@ class BookController extends Controller
     }
 
     function editBook($id){
-        $currentNepaliYear = getCurrentNepaliYear();
-
         $book = Book::findOrFail($id);
         $oldAuthors = Book::find($id)->getAuthors;
         // dd($oldAuthors);
@@ -157,7 +154,6 @@ class BookController extends Controller
         $authorList = Author::where('publish', 1)->get();
         return view('admin.books.edit')
                     ->with(array(
-                        'currentNepaliYear' => $currentNepaliYear,
                         'book' => $book,
                         'oldAuthors' => $oldAuthors,
                         'bookCatList' => $bookCatList,
@@ -235,6 +231,7 @@ class BookController extends Controller
             $editBook->name = Input::get('name');
             $editBook->isbn = Input::get('isbn');
             $editBook->publishedYear = Input::get('publishedYear');
+            $editBook->publishedMonth = Input::get('publishedMonth');
             $editBook->publisher = Input::get('publisher');
             $editBook->noOfPages = Input::get('noOfPages');
             $editBook->edition = Input::get('edition');

@@ -13,30 +13,34 @@
         }
 
         /* radio button css */
-        .stylish-radio{ position: inherit !important; display: inline !important; padding-left: 35px; margin-bottom: 12px; cursor: pointer;
-            font-size: 17px; user-select: none; }
-        .stylish-radio input { position: absolute; opacity: 0; cursor: pointer; }
-        .checkmark { position: absolute; height: 20px; width: 20px; background-color: #e0dbdb; 
-            border-radius: 50%; margin-top: 4%; }
-        .stylish-radio:hover input ~ .checkmark { background-color: #b5b1b1; }
-        .stylish-radio input:checked ~ .checkmark { background-color: #2196F3; }
-        .checkmark:after { content: ""; position: absolute; display: none; }
-        .stylish-radio input:checked ~ .checkmark:after { display: block; }
-        .stylish-radio .checkmark:after { top: 6px; left: 6px; width: 8px; height: 8px; border-radius: 50%;background: white;
-        }
+            .stylish-radio{ position: inherit !important; display: inline !important; padding-left: 35px; margin-bottom: 12px; cursor: pointer;
+                font-size: 17px; user-select: none; }
+            .stylish-radio input { position: absolute; opacity: 0; cursor: pointer; }
+            .checkmark { position: absolute; height: 20px; width: 20px; background-color: #e0dbdb; 
+                border-radius: 50%; margin-top: 4%; }
+            .stylish-radio:hover input ~ .checkmark { background-color: #b5b1b1; }
+            .stylish-radio input:checked ~ .checkmark { background-color: #2196F3; }
+            .checkmark:after { content: ""; position: absolute; display: none; }
+            .stylish-radio input:checked ~ .checkmark:after { display: block; }
+            .stylish-radio .checkmark:after { top: 6px; left: 6px; width: 8px; height: 8px; border-radius: 50%;background: white;
+            }
         /* radio button css ends */
 
         /* image delete ajax css */
-        .deleteIcon{ font-size: 23px;cursor: pointer; margin: 0; display: inline; }
-        .deleteIcon:hover i{color:red;}
-        #deleteBlock div img{ max-width: 60%; }
-        #loading{ position: absolute; left: 42%; top: 40vh; width: 16%; display: none; }
+            .deleteIcon{ font-size: 23px;cursor: pointer; margin: 0; display: inline; }
+            .deleteIcon:hover i{color:red;}
+            #deleteBlock div img{ max-width: 60%; }
+            #loading{ position: absolute; left: 42%; top: 40vh; width: 16%; display: none; }
 
-        .blur-body >:not(#loading) {
-          /*filter: blur(5px);*/ opacity: 0.4; pointer-events: none;
-        }
-
+            .blur-body >:not(#loading) {
+              /*filter: blur(5px);*/ opacity: 0.4; pointer-events: none;
+            }
         /* image delete ajax css ends */
+
+        /* year-month block css */
+            .year-month{ display: flex; justify-content: space-between; }
+            .year-month div{ width: 49%; }
+        /* year-month block css ends */
 
     </style>
 
@@ -79,18 +83,37 @@
                         </div>
                     </div>
                     <div class="form-group ">
-                        <div class="form-label-group">
-                            <select class="form-control" name="publishedYear" style="height:3em;" required>
-                                <option value="">Select Published Year</option>
-                                @for ($year = $currentNepaliYear; $year > 1700; $year--) {
-                                    <option value="{{$year}}" @if($year == $book->publishedYear) selected @endif>
-                                        {{$year}}
-                                    </option>
-                                }
-                                @endfor
-                            </select>                         
+                        <div class="form-label-group year-month">
+                            <div>
+                                <select class="form-control" name="publishedYear" style="height:3em;" 
+                                required>
+                                    <option value="">Select Published Year</option>
+                                    @php 
+                                    $currentNepaliYear = getCurrentNepaliYear();
+                                    @endphp
+                                    @for ($year = $currentNepaliYear; $year > 1700; $year--) {
+                                        <option value="{{$year}}" @if($year == $book->publishedYear) selected @endif>
+                                            {{$year}}
+                                        </option>
+                                    }
+                                    @endfor
+                                </select>
+                                @if ($errors->has('publishedYear')) <p class="help-block">{{ $errors->first('publishedYear') }}</p> @endif
+                            </div>
+                            <div>
+                                <select class="form-control" name="publishedMonth" style="height:3em;">
+                                    <option value="">Select Published Month</option>
+                                    @php
+                                        $monthArray = getNepaliMonth();
+                                        for ($month = 1; $month <= 12; $month++) {
+                                            if($book->publishedMonth == $month) $selected = 'selected';
+                                            else $selected = ''; 
+                                            echo '<option value="' . $month . '"'.$selected.'>'.$monthArray[$month].'</option>';
+                                        }
+                                    @endphp
+                                </select>
+                            </div>                        
                         </div>
-                        @if ($errors->has('publishedYear')) <p class="help-block">{{ $errors->first('publishedYear') }}</p> @endif
                     </div>
                     {{-- <div class="form-group ">
                         <div class="form-label-group">

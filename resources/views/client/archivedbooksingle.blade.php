@@ -94,7 +94,12 @@
                 			</div>
                 			<div class="row">
                 				<p class="col-sm-3">Published Year</p>
-                				<p class="col-sm-9">{{ $archivedBook->publishedYear }}</p>
+                				<p class="col-sm-9">
+                                    {{ $archivedBook->publishedYear }}
+                                    @if(!empty($archivedBook->publishedMonth))
+                                        | {{getNepaliMonth($archivedBook->publishedMonth)}}
+                                    @endif
+                                </p>
                 			</div>
                 			<div class="row">
                 				<p class="col-sm-3">archivedBook</p>

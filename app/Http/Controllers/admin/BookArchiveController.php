@@ -97,6 +97,7 @@ class BookArchiveController extends Controller
             $saveArchivedBook = new ArchivedBook;
             $saveArchivedBook->isbn = Input::get('isbn');
             $saveArchivedBook->publishedYear = Input::get('publishedYear');
+            $saveArchivedBook->publishedMonth = Input::get('publishedMonth');
             $saveArchivedBook->publisher = Input::get('publisher');
             $saveArchivedBook->noOfPages = Input::get('noOfPages');
 
@@ -189,6 +190,7 @@ class BookArchiveController extends Controller
 			// update archived book record
             $editArchivedBook->isbn = Input::get('isbn');
             $editArchivedBook->publishedYear = Input::get('publishedYear');
+            $editArchivedBook->publishedMonth = Input::get('publishedMonth');
             $editArchivedBook->publisher = Input::get('publisher');
             $editArchivedBook->noOfPages = Input::get('noOfPages');
 

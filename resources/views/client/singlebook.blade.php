@@ -93,10 +93,19 @@
                 				<p class="col-sm-3">ISBN</p>
                 				<p class="col-sm-9">{{ $book->isbn }}</p>
                 			</div>
-                			<div class="row">
+                			{{-- <div class="row">
                 				<p class="col-sm-3">Published Year</p>
                 				<p class="col-sm-9">{{ $book->publishedYear }}</p>
-                			</div>
+                			</div> --}}
+                            <div class="row">
+                                <p class="col-sm-3">Published Year</p>
+                                <p class="col-sm-9">
+                                    {{ $book->publishedYear }}
+                                    @if(!empty($book->publishedMonth))
+                                        | {{getNepaliMonth($book->publishedMonth)}}
+                                    @endif
+                                </p>
+                            </div>
                 			<div class="row">
                 				<p class="col-sm-3">Publisher</p>
                 				<p class="col-sm-9">{{ $book->publisher }}</p>

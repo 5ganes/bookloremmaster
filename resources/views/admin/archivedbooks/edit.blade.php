@@ -23,6 +23,11 @@
         }
         /* image delete ajax css ends */
 
+        /* year-month block css */
+            .year-month{ display: flex; justify-content: space-between; }
+            .year-month div{ width: 49%; }
+        /* year-month block css ends */
+
     </style>
 
 @endsection
@@ -55,16 +60,32 @@
                         </div>
                     </div>
                     <div class="form-group ">
-                        <div class="form-label-group">
-                            <select class="form-control" name="publishedYear" style="height:3em;" required>
-                                <option value="">Select Published Year</option>
-                                @for ($year = $currentPublishedYear - 1; $year > 1700; $year--) { 
-                                    <option value="{{$year}}" @if($year == $archivedBook->publishedYear) selected @endif>{{$year}}</option>
-                                }
-                                @endfor
-                            </select>                         
+                        <div class="form-label-group year-month">
+                            <div>
+                                <select class="form-control" id="publishedYear" name="publishedYear" style="height:3em;" required>
+                                    <option value="">Select Published Year</option>
+                                    @for ($year = $currentPublishedYear; $year > 1700; $year--) { 
+                                        <option value="{{$year}}" @if($year == $archivedBook->publishedYear) selected @endif>{{$year}}</option>
+                                    }
+                                    @endfor
+                                </select>
+                                @if ($errors->has('publishedYear')) <p class="help-block">{{ $errors->first('publishedYear') }}</p> @endif
+                            </div>
+                            <div>
+                                <select class="form-control" id="publishedMonth" name="publishedMonth" style="height:3em;" @if(empty($mainBook->publishedMonth)) disabled @endif>
+                                    <option value="">Select Published Month</option>
+                                    @php
+                                        $monthArray = getNepaliMonth();
+                                    @endphp
+                                    @for ($month = 1; $month <= 12; $month++) { 
+                                        <option value="{{$month}}" @if($archivedBook->publishedMonth == $month) selected @endif>
+                                            {{$monthArray[$month]}}
+                                        </option>
+                                    }
+                                    @endfor
+                                </select>
+                            </div>                         
                         </div>
-                        @if ($errors->has('publishedYear')) <p class="help-block">{{ $errors->first('publishedYear') }}</p> @endif
                     </div>
                     <div class="form-group ">
                         <div class="form-label-group">
@@ -177,5 +198,26 @@
         });
     </script>
     {{--  image delete ajax jquery ends --}}
+
+    {{--  --}}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#publishedYear').change(function(){
+                var monthOptions = $('#publishedMonth option');
+                if(this.value == {{$mainBook->publishedYear}}){
+                    for(var i = 0; i < monthOptions.length; i++){
+                        if(monthOptions[i].value >= {{$mainBook->publishedMonth}}){
+                            monthOptions[i].disabled = true;
+                        }
+                    }
+                }
+                else{
+                    for(var i = 0; i < monthOptions.length; i++){
+                        monthOptions[i].disabled = false;
+                    }
+                }
+            });
+        });
+    </script>
 
 @endsection

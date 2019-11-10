@@ -40,7 +40,7 @@
                             <th>SN</th>
                             <th>Name</th>
                             <th>ISBN</th>
-                            <th>Published Year</th>
+                            <th>Published Date</th>
                             <th>Publisher</th>
                             <th>Pages</th>
                             <th style="min-width: 130px;width: 130px;">Action</th>
@@ -51,7 +51,7 @@
                             <th>SN</th>
                             <th>Name</th>
                             <th>ISBN</th>
-                            <th>Published Year</th>
+                            <th>Published Date</th>
                             <th>Publisher</th>
                             <th>Pages</th>
                             <th>Action</th>
@@ -64,7 +64,12 @@
                                 <td>{{$sn++}}</td>
                                 <td>{{$mainBook->name}}</td>
                                 <td>{{$book->isbn}}</td>
-                                <td>{{$book->publishedYear}}</td>
+                                <td>
+                                    {{$book->publishedYear}} 
+                                    @if(!empty($book->publishedMonth))
+                                        | {{getNepaliMonth($book->publishedMonth)}}
+                                    @endif
+                                </td>
                                 <td>{{$book->publisher}}</td>
                                 <td>{{$book->noOfPages}}</td>
                                 <td>
