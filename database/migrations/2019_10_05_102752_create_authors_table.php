@@ -19,7 +19,7 @@ class CreateAuthorsTable extends Migration
             $table->string('address')->nullable();
             $table->string('email')->nullable();
             $table->string('phone', 20)->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('publish')->unsigned();
             $table->timestamps();
         });
