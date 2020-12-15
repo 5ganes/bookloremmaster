@@ -77,12 +77,19 @@
                             </div>                         
                         </div>
                     </div>
-                    <div class="form-group ">
+                    {{-- <div class="form-group ">
                         <div class="form-label-group">
                             <input type="text" id="publisher" class="form-control" placeholder="Publisher" name="publisher" value="{{ $mainBook->publisher}}" required>
                             <label for="publisher">Publisher</label>                         
                         </div>
                         @if ($errors->has('publisher')) <p class="help-block">{{ $errors->first('publisher') }}</p> @endif
+                    </div> --}}
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <select class="form-control" name="bookPublisher" style="height:3em;" disabled>
+                                <option value="">{{$mainBook->publisherName}}</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group ">
                         <div class="form-label-group">

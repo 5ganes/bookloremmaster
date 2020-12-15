@@ -107,9 +107,9 @@
                                 </p>
                             </div>
                 			<div class="row">
-                				<p class="col-sm-3">Publisher</p>
-                				<p class="col-sm-9">{{ $book->publisher }}</p>
-                			</div>
+                                <p class="col-sm-3">Publisher</p>
+                                <p class="col-sm-9">{{ $publisher->name }}</p>
+                            </div>
                 			<div class="row">
                 				<p class="col-sm-3">No of Pages</p>
                 				<p class="col-sm-9">{{ $book->noOfPages }}</p>

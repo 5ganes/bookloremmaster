@@ -21,6 +21,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ config('app.adminurl') }}publisherlist">
+          <i class="fa fa-list"></i>
+          <span>Book Publishers</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ config('app.adminurl') }}authorlist">
           <i class="fa fa-pen"></i>
           <span>Author Management</span>

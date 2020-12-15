@@ -19,12 +19,13 @@ class CreateBooksTable extends Migration
             $table->string('isbn')->nullable();
             $table->smallInteger('publishedYear');
             $table->smallInteger('publishedMonth')->nullable();
-            $table->string('publisher');
+            // $table->string('publisher');
             $table->integer('noOfPages');
             $table->string('edition')->nullable();
             $table->string('ddcCallNumber')->nullable();
             // $table->bigInteger('authorId')->unsigned();
             $table->bigInteger('bookCategory')->unsigned();
+            $table->bigInteger('bookPublisher')->unsigned();
             $table->string('bookPDF');
             $table->string('image');
             $table->integer('featured')->unsigned();
@@ -34,6 +35,7 @@ class CreateBooksTable extends Migration
 
             // set foreign key
             $table->foreign('bookCategory')->references('id')->on('book_categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('bookPublisher')->references('id')->on('book_publishers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }

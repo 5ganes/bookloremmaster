@@ -71,6 +71,15 @@ Route::post('/admin/login', 'Auth\LoginController@login');
     Route::post('admin/deletecategory/{id}', 'admin\CategoryController@deleteCategory');
 // book category routes end
 
+// book publisher routes
+    Route::get('admin/publisherlist', 'admin\PublisherController@index');
+    Route::get('admin/addpublisher', 'admin\PublisherController@addPublisher');
+    Route::post('admin/storepublisher', 'admin\PublisherController@storePublisher');
+    Route::get('admin/editpublisher/{id}', 'admin\PublisherController@editPublisher');
+    Route::post('admin/updatepublisher/{id}', 'admin\PublisherController@updatePublisher');
+    Route::post('admin/deletepublisher/{id}', 'admin\PublisherController@deletePublisher');
+// book publisher routes end
+
 // author routes
     Route::get('admin/authorlist', 'admin\AuthorController@index');
     Route::get('admin/addauthor', 'admin\AuthorController@addAuthor');

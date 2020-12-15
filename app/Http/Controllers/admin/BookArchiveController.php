@@ -41,7 +41,8 @@ class BookArchiveController extends Controller
 		// dd($mainBookId . ' , ' . $currentPublishedYear->publishedYear);
 		$mainBook = DB::table('books')
 						->join('book_categories', 'books.bookCategory', '=', 'book_categories.id')
-						->select('books.*', 'book_categories.name as categoryName')
+                        ->join('book_publishers', 'books.bookPublisher', '=', 'book_publishers.id')
+						->select('books.*', 'book_categories.name as categoryName', 'book_publishers.name as publisherName')
 						->where('books.id', $mainBookId)
 						->get()->first();
 		$authors = Book::find($mainBookId)->getAuthors;
@@ -57,7 +58,7 @@ class BookArchiveController extends Controller
 	function storeArchivedBook(Request $request, $mainBookId){
 		$v = Validator::make($request->all(), [
             'publishedYear' => 'required|unique:books_archive,publishedYear',
-            'publisher' => 'required',
+            // 'publisher' => 'required',
             'noOfPages' => 'required|min:1|numeric',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'bookPDF' => 'required|mimes:pdf|max:102400'
@@ -98,7 +99,7 @@ class BookArchiveController extends Controller
             $saveArchivedBook->isbn = Input::get('isbn');
             $saveArchivedBook->publishedYear = Input::get('publishedYear');
             $saveArchivedBook->publishedMonth = Input::get('publishedMonth');
-            $saveArchivedBook->publisher = Input::get('publisher');
+            // $saveArchivedBook->publisher = Input::get('publisher');
             $saveArchivedBook->noOfPages = Input::get('noOfPages');
 
             $saveArchivedBook->edition = Input::get('edition');
@@ -120,7 +121,8 @@ class BookArchiveController extends Controller
 
 		$mainBook = DB::table('books')
 						->join('book_categories', 'books.bookCategory', '=', 'book_categories.id')
-						->select('books.*', 'book_categories.name as categoryName')
+                        ->join('book_publishers', 'books.bookPublisher', '=', 'book_publishers.id')
+						->select('books.*', 'book_categories.name as categoryName', 'book_publishers.name as publisherName')
 						->where('books.id', $mainBookId)
 						->get()->first();
 		$archivedBook = ArchivedBook::findOrFail($id);
@@ -139,7 +141,7 @@ class BookArchiveController extends Controller
 		$mainBookId = ArchivedBook::where('id', $id)->get()->first()->mainBookId;
 		$v = Validator::make($request->all(), [
             'publishedYear' => 'required|unique:books_archive,publishedYear,'.$id,
-            'publisher' => 'required',
+            // 'publisher' => 'required',
             'noOfPages' => 'required|min:1|numeric',
             'image' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
             'bookPDF' => 'nullable|mimes:pdf|max:102400'
@@ -191,7 +193,7 @@ class BookArchiveController extends Controller
             $editArchivedBook->isbn = Input::get('isbn');
             $editArchivedBook->publishedYear = Input::get('publishedYear');
             $editArchivedBook->publishedMonth = Input::get('publishedMonth');
-            $editArchivedBook->publisher = Input::get('publisher');
+            // $editArchivedBook->publisher = Input::get('publisher');
             $editArchivedBook->noOfPages = Input::get('noOfPages');
 
             $editArchivedBook->edition = Input::get('edition');

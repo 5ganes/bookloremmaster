@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 // use Models Model
 use App\Book;
 use App\Category;
+use App\Publisher;
 use App\Author;
 use App\ArchivedBook;
 use App\BookAuthorRelation;
@@ -49,10 +50,12 @@ class BookController extends Controller
 
     function addBook(){
     	$bookCatList = Category::where('publish', 1)->get();
+        $bookPubList = Publisher::where('publish', 1)->get();
         $authorList = Author::where('publish', 1)->get();
     	return view('admin.books.add')
     				->with(array(
     					'bookCatList' => $bookCatList,
+                        'bookPubList' => $bookPubList,
                         'authorList' => $authorList
     				));
     }
@@ -62,9 +65,10 @@ class BookController extends Controller
         $v = Validator::make($request->all(), [
             'name' => 'required',
             'publishedYear' => 'required',
-            'publisher' => 'required',
+            // 'publisher' => 'required',
             'noOfPages' => 'required|min:1|numeric',
             'bookCategory' => 'required',
+            'bookPublisher' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'bookPDF' => 'required|mimes:pdf|max:102400'
         ]);
@@ -114,11 +118,12 @@ class BookController extends Controller
             $saveBook->isbn = Input::get('isbn');
             $saveBook->publishedYear = Input::get('publishedYear');
             $saveBook->publishedMonth = Input::get('publishedMonth');
-            $saveBook->publisher = Input::get('publisher');
+            // $saveBook->publisher = Input::get('publisher');
             $saveBook->noOfPages = Input::get('noOfPages');
             $saveBook->edition = Input::get('edition');
             $saveBook->ddcCallNumber = Input::get('ddcCallNumber');
             $saveBook->bookCategory = Input::get('bookCategory');
+            $saveBook->bookPublisher = Input::get('bookPublisher');
             $saveBook->bookPDF = $pdfName;
             $saveBook->image = $imageName;
             $saveBook->featured = Input::get('featured');
@@ -151,12 +156,14 @@ class BookController extends Controller
         $oldAuthors = Book::find($id)->getAuthors;
         // dd($oldAuthors);
         $bookCatList = Category::where('publish', 1)->get();
+        $bookPubList = Publisher::where('publish', 1)->get();
         $authorList = Author::where('publish', 1)->get();
         return view('admin.books.edit')
                     ->with(array(
                         'book' => $book,
                         'oldAuthors' => $oldAuthors,
                         'bookCatList' => $bookCatList,
+                        'bookPubList' => $bookPubList,
                         'authorList' => $authorList
                     ));   
     }
@@ -165,9 +172,10 @@ class BookController extends Controller
         $v = Validator::make($request->all(), [
             'name' => 'required',
             'publishedYear' => 'required',
-            'publisher' => 'required',
+            // 'publisher' => 'required',
             'noOfPages' => 'required|min:1|numeric',
             'bookCategory' => 'required',
+            'bookPublisher' => 'required',
             'image' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
             'bookPDF' => 'nullable|mimes:pdf|max:102400'
         ]);
@@ -232,11 +240,12 @@ class BookController extends Controller
             $editBook->isbn = Input::get('isbn');
             $editBook->publishedYear = Input::get('publishedYear');
             $editBook->publishedMonth = Input::get('publishedMonth');
-            $editBook->publisher = Input::get('publisher');
+            // $editBook->publisher = Input::get('publisher');
             $editBook->noOfPages = Input::get('noOfPages');
             $editBook->edition = Input::get('edition');
             $editBook->ddcCallNumber = Input::get('ddcCallNumber');
             $editBook->bookCategory = Input::get('bookCategory');
+            $editBook->bookPublisher = Input::get('bookPublisher');
             $editBook->bookPDF = $pdfName;
             $editBook->image = $imageName;
             $editBook->featured = Input::get('featured');

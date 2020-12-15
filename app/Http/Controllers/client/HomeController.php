@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Category;
+use App\Publisher;
 use App\Book;
 use App\archivedBook;
 
@@ -38,6 +39,7 @@ class HomeController extends Controller
 		$book = Book::findOrFail($id);
 		// dd($book);
 		$category = Category::find($book->bookCategory);
+		$publisher = Publisher::find($book->bookPublisher);
 		$otherBooksOfCategory = Book::where('bookCategory', $book->bookCategory)->where('id', '!=', $id)->where('publish', 1)->get();
 		
 		$authors = Book::find($id)->getAuthors;
@@ -49,6 +51,7 @@ class HomeController extends Controller
 		return view('client.singlebook')->with(array(
 			'categoryList' => $this->categoryList,
 			'category' => $category,
+			'publisher' => $publisher,
 			'book' => $book,
 			'otherBooksOfCategory' => $otherBooksOfCategory,
 			'authors' => $authors
@@ -74,6 +77,7 @@ class HomeController extends Controller
 		$mainBook = Book::findOrFail($mainBookId);
 		$archivedBook = ArchivedBook::findOrFail($id);
 		$category = Category::find($mainBook->bookCategory);
+		$publisher = Publisher::find($mainBook->bookPublisher);
 		$otherArchivedBooksOfBook = ArchivedBook::where('mainBookId', $archivedBook->mainBookId)->where('id', '!=', $id)->get();
 		
 		$authors = Book::find($mainBookId)->getAuthors;
@@ -81,6 +85,7 @@ class HomeController extends Controller
 			'categoryList' => $this->categoryList,
 			'mainBook' => $mainBook,
 			'category' => $category,
+			'publisher' => $publisher,
 			'archivedBook' => $archivedBook,
 			'otherArchivedBooksOfBook' => $otherArchivedBooksOfBook,
 			'authors' => $authors

@@ -122,12 +122,23 @@
                         </div>
                         @if ($errors->has('publishedDate')) <p class="help-block">{{ $errors->first('publishedDate') }}</p> @endif
                     </div> --}}
-                    <div class="form-group ">
+                    {{-- <div class="form-group ">
                         <div class="form-label-group">
                             <input type="text" id="publisher" class="form-control" placeholder="Publisher" name="publisher" value="{{ $book->publisher }}" required>
                             <label for="publisher">Publisher</label>                         
                         </div>
                         @if ($errors->has('publisher')) <p class="help-block">{{ $errors->first('publisher') }}</p> @endif
+                    </div> --}}
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <select class="form-control" name="bookPublisher" style="height:3em;" required>
+                                <option value="">Select Book Publisher</option>
+                                @foreach($bookPubList as $bookPub)
+                                    <option value="{{ $bookPub->id }}" <?php if($book->bookPublisher == $bookPub->id) echo 'selected' ?> >{{ $bookPub->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @if ($errors->has('bookPublisher')) <p class="help-block">{{ $errors->first('bookPublisher') }}</p> @endif
                     </div>
                     <div class="form-group ">
                         <div class="form-label-group">
