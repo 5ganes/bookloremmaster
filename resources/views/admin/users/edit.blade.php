@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <select class="form-control" name="type" style="height:3em;">
+                        <select class="form-control" name="type" style="height:3em;" @if($user->type == 'admin') disabled @endif>
                             <option value="admin">Admin</option>
                             <option value="normal" @if($user->type == 'normal') selected @endif>normal</option>
                         </select>

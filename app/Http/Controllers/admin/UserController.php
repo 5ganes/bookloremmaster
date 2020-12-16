@@ -85,7 +85,10 @@ class UserController extends Controller
             $editUser->name = Input::get('name');
             $editUser->email = Input::get('email');
             $editUser->password = Hash::make(Input::get('password'));
-            $editUser->type = Input::get('type');
+            
+            if(isset($request->all()['type']))
+                $editUser->type = Input::get('type');
+            
             $editUser->save();
 
             return redirect::to('admin/userlist')->with('success', 'User Updated Successfully.');
