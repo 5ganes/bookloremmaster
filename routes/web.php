@@ -33,6 +33,7 @@
     Route::get('/booksingle/{id}', 'client\HomeController@getSingleBook');
     Route::get('/archivedbooks/{id}', 'client\HomeController@archivedBooks');
     Route::get('/archivedbooksingle/{id}', 'client\HomeController@getSingleArchivedBook');
+    Route::post('/booksearch', 'client\HomeController@searchBooks');
 /****************************** Front End Routing Ends  ******************************************************/
 
 

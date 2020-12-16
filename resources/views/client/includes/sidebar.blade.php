@@ -1,5 +1,11 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
+    <li class="nav-item">
+      <form method="POST" action="{{ config('app.url') }}booksearch">
+        @csrf
+        <input type="text" class="form-control" name="keyword" placeholder="Search Books" required>
+      </form>
+    </li>
     <li class="nav-item active">
       <a class="nav-link" href="#" style="background-color: #042144;">
         <i class="fas fa-align-justify"></i>

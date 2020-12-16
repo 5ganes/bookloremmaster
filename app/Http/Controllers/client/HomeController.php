@@ -5,10 +5,15 @@ namespace App\Http\Controllers\client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+
 use App\Category;
 use App\Publisher;
 use App\Book;
 use App\archivedBook;
+use DB;
 
 class HomeController extends Controller
 {
@@ -90,6 +95,40 @@ class HomeController extends Controller
 			'otherArchivedBooksOfBook' => $otherArchivedBooksOfBook,
 			'authors' => $authors
 		)); 
+	}
+
+	public function searchBooks(Request $request){
+		// dd($request->all());
+		$v = Validator::make($request->all(),[
+            'keyword' => 'required'
+        ]);
+        if($v -> fails()){
+            return redirect::back()->withErrors($v->messages())->withInput();
+        }
+        else{
+			$keyword = Input::get('keyword');
+			$books = DB::table('books')
+					->join('book_categories', 'books.bookCategory', '=', 'book_categories.id')
+					->join('book_publishers', 'books.bookPublisher', '=', 'book_publishers.id')
+					->join('books_authors_relation', 'books.id', '=', 'books_authors_relation.bookId')
+					->join('authors', 'authors.id', '=', 'books_authors_relation.authorId')
+					->select('books.*')
+					->where('books.name', 'like', '%'.$keyword.'%')
+					->orWhere('books.isbn', 'like', '%'.$keyword.'%')
+					->orWhere('books.publishedYear', 'like', '%'.$keyword.'%')
+					->orWhere('books.noOfPages', 'like', '%'.$keyword.'%')
+					->orWhere('books.ddcCallNumber', 'like', '%'.$keyword.'%')
+					->orWhere('book_categories.name', 'like', '%'.$keyword.'%')
+					->orWhere('book_publishers.name', 'like', '%'.$keyword.'%')
+					->orWhere('authors.name', 'like', '%'.$keyword.'%')
+					->groupBy('books.id')
+					->get();
+			// dd($books);
+			return view('client.home')->with(array(
+				'categoryList' => $this->categoryList,
+				'featuredBooks' => $books
+			));
+		}
 	}
 
 }
