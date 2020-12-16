@@ -185,6 +185,14 @@
                         </div>
                         @if ($errors->has('bookPDF')) <p class="help-block">{{ $errors->first('bookPDF') }}</p> @endif
                     </div>
+
+                    <div class="form-group ">
+                        <div class="form-label-group">
+                            <input type="text" id="keywords" class="form-control" placeholder="Keywords" name="keywords" value="{{ old('keywords') }}">
+                            <label for="keywords">Keywords</label>                         
+                        </div>
+                    </div>
+
                     <div class="form-group ">
                         <div class="form-label-group">
                             Featured : 

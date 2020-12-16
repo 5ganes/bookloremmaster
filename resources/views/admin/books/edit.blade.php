@@ -215,6 +215,14 @@
                             <b>( PDF, max : 100MB )</b>
                         </div>
                     </div>
+
+                    <div class="form-group ">
+                        <div class="form-label-group">
+                            <input type="text" id="keywords" class="form-control" placeholder="Keywords" name="keywords" value="{{ $book->keywords }}">
+                            <label for="keywords">Keywords</label>                         
+                        </div>
+                    </div>
+
                     <div class="form-group ">
                         <div class="form-label-group">
                             Featured : 

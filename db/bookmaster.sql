@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2020 at 06:21 AM
+-- Generation Time: Dec 16, 2020 at 03:37 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -45,7 +45,11 @@ CREATE TABLE `authors` (
 --
 
 INSERT INTO `authors` (`id`, `name`, `address`, `email`, `phone`, `image`, `publish`, `created_at`, `updated_at`) VALUES
-(1, 'test author', 'tset add', 'test@gmail.com', '33434', 'noimage.jpg', 1, '2020-11-30 02:58:01', '2020-11-30 02:58:01');
+(1, 'test author', 'tset add', 'test@gmail.com', '33434', 'noimage.jpg', 1, '2020-11-30 02:58:01', '2020-12-09 01:51:30'),
+(2, 'ganesh khatri', 'ktm', 'kh6ganesh@gmail.com', '897987987', 'noimage.jpg', 1, '2020-12-08 02:20:23', '2020-12-08 02:20:23'),
+(3, 'hridaya kandel', 'ktm', 'hridaya@gmail.com', '988987978', 'noimage.jpg', 1, '2020-12-08 02:20:40', '2020-12-08 02:20:40'),
+(4, 'ganesh thaa', 'ktm', 'ganesh123@gmail.com', '9879898', 'noimage.jpg', 1, '2020-12-08 02:22:52', '2020-12-08 02:22:52'),
+(5, 'ramesh Shahi', 'ktm', 'ramesh@gmail.com', '787978', 'noimage.jpg', 1, '2020-12-08 02:37:04', '2020-12-08 02:37:04');
 
 -- --------------------------------------------------------
 
@@ -59,13 +63,14 @@ CREATE TABLE `books` (
   `isbn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `publishedYear` smallint(6) NOT NULL,
   `publishedMonth` smallint(6) DEFAULT NULL,
-  `publisher` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `noOfPages` int(11) NOT NULL,
   `edition` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ddcCallNumber` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bookCategory` bigint(20) UNSIGNED NOT NULL,
+  `bookPublisher` bigint(20) UNSIGNED NOT NULL,
   `bookPDF` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keywords` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `featured` int(10) UNSIGNED NOT NULL,
   `publish` int(10) UNSIGNED NOT NULL,
   `userId` bigint(20) UNSIGNED NOT NULL,
@@ -77,8 +82,11 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `name`, `isbn`, `publishedYear`, `publishedMonth`, `publisher`, `noOfPages`, `edition`, `ddcCallNumber`, `bookCategory`, `bookPDF`, `image`, `featured`, `publish`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'test book', '56565', 2070, 5, 'test publisher', 1234, 'test edition', '1234', 1, 'chapter1-lecture3-introduction_1606725908.pdf', 'pnepallogo_1606725908.png', 1, 1, 1, '2020-11-30 03:00:08', '2020-11-30 03:00:08');
+INSERT INTO `books` (`id`, `name`, `isbn`, `publishedYear`, `publishedMonth`, `noOfPages`, `edition`, `ddcCallNumber`, `bookCategory`, `bookPublisher`, `bookPDF`, `image`, `keywords`, `featured`, `publish`, `userId`, `created_at`, `updated_at`) VALUES
+(2, 'test book', '656', 2065, 4, 444, 'second', '1234', 3, 1, 'pratinidhi_new_1572854000_1608048869.pdf', 'nepalconstitutionnepal_1573225394_1608048869.jpg', NULL, 1, 1, 1, '2020-12-15 10:29:29', '2020-12-16 05:39:18'),
+(3, 'Constitution of Nepal', '4581', 2068, 7, 4321, 'third', '673', 2, 3, 'pratinidhi_sabha_niyamawali_1572855953_1608117819.pdf', 'pratinidhi_sabha_chautho_adhibesan_details_all_notices_cover_1572851633_1608117819.png', NULL, 1, 1, 1, '2020-12-16 05:38:39', '2020-12-16 05:38:39'),
+(4, 'test book for normal user', '1234', 2072, NULL, 345, 'first', '2345', 2, 1, 'pratinidhi_new_1573225394_1608124762.pdf', 'nepalconstitutionnepal_1573225394_1608048869_1608049634_1608124762.jpg', NULL, 1, 1, 2, '2020-12-16 07:34:22', '2020-12-16 07:34:22'),
+(5, 'book with keywords', '34', 2064, NULL, 554, 'fourth', '445', 2, 1, 'pratinidhi_new_1572955722_1608127112.pdf', 'nepalconstitutionnepal_1572855804_1608127112.jpg', 'constitution, Nepal, Government', 0, 1, 1, '2020-12-16 08:13:32', '2020-12-16 08:13:32');
 
 -- --------------------------------------------------------
 
@@ -91,7 +99,6 @@ CREATE TABLE `books_archive` (
   `isbn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `publishedYear` smallint(6) NOT NULL,
   `publishedMonth` smallint(6) DEFAULT NULL,
-  `publisher` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `noOfPages` int(11) NOT NULL,
   `edition` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ddcCallNumber` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -101,6 +108,13 @@ CREATE TABLE `books_archive` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `books_archive`
+--
+
+INSERT INTO `books_archive` (`id`, `isbn`, `publishedYear`, `publishedMonth`, `noOfPages`, `edition`, `ddcCallNumber`, `bookPDF`, `image`, `mainBookId`, `created_at`, `updated_at`) VALUES
+(1, '656777', 2065, 3, 443, 'first', '234', 'pratinidhi_sabha_niyamawali_1572855953_1608049706.pdf', 'nepalconstitutionnepal_1573225394_1608048869_1608049706.jpg', 2, '2020-12-15 10:43:26', '2020-12-15 10:44:44');
 
 -- --------------------------------------------------------
 
@@ -121,7 +135,12 @@ CREATE TABLE `books_authors_relation` (
 --
 
 INSERT INTO `books_authors_relation` (`id`, `bookId`, `authorId`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2020-11-30 03:00:08', '2020-11-30 03:00:08');
+(2, 2, 2, '2020-12-15 10:29:29', '2020-12-15 10:29:29'),
+(3, 3, 3, '2020-12-16 05:38:39', '2020-12-16 05:38:39'),
+(4, 3, 5, '2020-12-16 05:38:40', '2020-12-16 05:38:40'),
+(5, 4, 3, '2020-12-16 07:34:22', '2020-12-16 07:34:22'),
+(6, 5, 5, '2020-12-16 08:13:33', '2020-12-16 08:13:33'),
+(7, 5, 2, '2020-12-16 08:13:33', '2020-12-16 08:13:33');
 
 -- --------------------------------------------------------
 
@@ -142,7 +161,31 @@ CREATE TABLE `book_categories` (
 --
 
 INSERT INTO `book_categories` (`id`, `name`, `publish`, `created_at`, `updated_at`) VALUES
-(1, 'test cat', 1, '2020-11-30 02:57:40', '2020-11-30 02:57:40');
+(1, 'test cat', 1, '2020-11-30 02:57:40', '2020-11-30 02:57:40'),
+(2, 'Constitution', 1, '2020-12-08 02:32:18', '2020-12-08 02:32:18'),
+(3, 'Report', 1, '2020-12-08 02:32:31', '2020-12-08 02:32:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book_publishers`
+--
+
+CREATE TABLE `book_publishers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `publish` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `book_publishers`
+--
+
+INSERT INTO `book_publishers` (`id`, `name`, `publish`, `created_at`, `updated_at`) VALUES
+(1, 'Ekata Publication', 1, '2020-12-15 10:11:38', '2020-12-15 10:13:32'),
+(3, 'Simrik Publication', 1, '2020-12-15 10:14:32', '2020-12-15 10:14:32');
 
 -- --------------------------------------------------------
 
@@ -167,7 +210,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_10_05_102752_create_authors_table', 1),
 (5, '2019_10_10_064133_create_books_table', 1),
 (6, '2019_10_16_143406_create_books_authors_relation_table', 1),
-(7, '2019_10_25_061921_create_books_archive_table', 1);
+(7, '2019_10_25_061921_create_books_archive_table', 1),
+(8, '2020_12_15_153342_create_book_publishers_table', 2);
 
 -- --------------------------------------------------------
 
@@ -204,8 +248,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Ganesh Khatri', 'kh6ganesh@gmail.com', NULL, '$2y$10$4an29hv.d/iCMyZhEFtahOr1JDRXWVR3BN.OTzyiC9nY7vyw6Btde', 'admin', NULL, NULL, NULL),
-(2, 'Normal User', 'normal@gmail.com', NULL, '$2y$10$148K9Dj3H/fD7aSO.wR0oe/VU0aA2A7aQqZrTKAlTqgtwDW6KoXNG', 'normal', NULL, '2020-11-30 02:15:34', '2020-11-30 02:15:34');
+(1, 'Ganesh Khatri', 'kh6ganesh@gmail.com', NULL, '$2y$10$6whY0vjrRfRUAUt6X9D.Ieo0Kv07x2lBjBq1bI5S0/9rEZN1DVo2G', 'admin', NULL, NULL, '2020-12-16 07:52:12'),
+(2, 'Normal User', 'normal@gmail.com', NULL, '$2y$10$vtqJV6Dnwf9s2qniKEajsuwX44TAPz3cfA6lvHzrvcrKSfgurzZoK', 'normal', NULL, '2020-11-30 02:15:34', '2020-12-16 07:52:28');
 
 --
 -- Indexes for dumped tables
@@ -223,7 +267,8 @@ ALTER TABLE `authors`
 ALTER TABLE `books`
   ADD PRIMARY KEY (`id`),
   ADD KEY `books_bookcategory_foreign` (`bookCategory`),
-  ADD KEY `books_userid_foreign` (`userId`);
+  ADD KEY `books_userid_foreign` (`userId`),
+  ADD KEY `books_bookpublisher_foreign` (`bookPublisher`);
 
 --
 -- Indexes for table `books_archive`
@@ -244,6 +289,12 @@ ALTER TABLE `books_authors_relation`
 -- Indexes for table `book_categories`
 --
 ALTER TABLE `book_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `book_publishers`
+--
+ALTER TABLE `book_publishers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -273,37 +324,43 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `books_archive`
 --
 ALTER TABLE `books_archive`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `books_authors_relation`
 --
 ALTER TABLE `books_authors_relation`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `book_categories`
 --
 ALTER TABLE `book_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `book_publishers`
+--
+ALTER TABLE `book_publishers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -320,6 +377,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `books`
   ADD CONSTRAINT `books_bookcategory_foreign` FOREIGN KEY (`bookCategory`) REFERENCES `book_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `books_bookpublisher_foreign` FOREIGN KEY (`bookPublisher`) REFERENCES `book_publishers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `books_userid_foreign` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

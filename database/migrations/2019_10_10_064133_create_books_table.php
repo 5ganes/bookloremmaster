@@ -28,6 +28,7 @@ class CreateBooksTable extends Migration
             $table->bigInteger('bookPublisher')->unsigned();
             $table->string('bookPDF');
             $table->string('image');
+            $table->string('keywords');
             $table->integer('featured')->unsigned();
             $table->integer('publish')->unsigned();
             $table->bigInteger('userId')->unsigned();

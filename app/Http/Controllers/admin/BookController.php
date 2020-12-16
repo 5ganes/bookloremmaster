@@ -126,6 +126,7 @@ class BookController extends Controller
             $saveBook->bookPublisher = Input::get('bookPublisher');
             $saveBook->bookPDF = $pdfName;
             $saveBook->image = $imageName;
+            $saveBook->keywords = Input::get('keywords');
             $saveBook->featured = Input::get('featured');
             $saveBook->publish = Input::get('publish');
             $saveBook->userId = Auth::user()->id;
@@ -248,6 +249,7 @@ class BookController extends Controller
             $editBook->bookPublisher = Input::get('bookPublisher');
             $editBook->bookPDF = $pdfName;
             $editBook->image = $imageName;
+            $editBook->keywords = Input::get('keywords');
             $editBook->featured = Input::get('featured');
             $editBook->publish = Input::get('publish');
             $editBook->save();
