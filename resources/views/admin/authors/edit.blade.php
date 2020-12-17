@@ -84,7 +84,7 @@
                         <div class="form-label-group">
                             <b>Image :</b><br>
                             <input type="file" id="image" class="form-control" name="image">
-                            <b>( jpeg,png,jpg, max:2MB )</b>
+                            <b>( jpeg,png,jpg, max:10MB )</b>
                         </div>
                         @if ($errors->has('image')) <p class="help-block">{{ $errors->first('image') }}</p> @endif
                     </div>

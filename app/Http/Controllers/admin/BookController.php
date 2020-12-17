@@ -69,8 +69,8 @@ class BookController extends Controller
             'noOfPages' => 'required|min:1|numeric',
             'bookCategory' => 'required',
             'bookPublisher' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'bookPDF' => 'required|mimes:pdf|max:102400'
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'bookPDF' => 'required|mimes:pdf|max:1024000'
         ]);
         if($v->fails()){
             return redirect::back()->withErrors($v->messages())->withInput();
@@ -177,8 +177,8 @@ class BookController extends Controller
             'noOfPages' => 'required|min:1|numeric',
             'bookCategory' => 'required',
             'bookPublisher' => 'required',
-            'image' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
-            'bookPDF' => 'nullable|mimes:pdf|max:102400'
+            'image' => 'image|nullable|mimes:jpeg,png,jpg|max:10240',
+            'bookPDF' => 'nullable|mimes:pdf|max:1024000'
         ]);
         if($v->fails()){
             return redirect::back()->withErrors($v->messages())->withInput();

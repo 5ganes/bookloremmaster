@@ -118,6 +118,7 @@ class HomeController extends Controller
 					->orWhere('books.publishedYear', 'like', '%'.$keyword.'%')
 					->orWhere('books.noOfPages', 'like', '%'.$keyword.'%')
 					->orWhere('books.ddcCallNumber', 'like', '%'.$keyword.'%')
+					->orWhere('books.keywords', 'like', '%'.$keyword.'%')
 					->orWhere('book_categories.name', 'like', '%'.$keyword.'%')
 					->orWhere('book_publishers.name', 'like', '%'.$keyword.'%')
 					->orWhere('authors.name', 'like', '%'.$keyword.'%')

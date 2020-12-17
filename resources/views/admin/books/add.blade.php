@@ -173,7 +173,7 @@
                         <div class="form-label-group">
                            Cover Image :<br>
                            <input type="file" id="image" class="form-control" name="image" required>
-                           <b>( jpeg,png,jpg, max:2MB )</b>
+                           <b>( jpeg,png,jpg, max:10MB )</b>
                         </div>
                         @if ($errors->has('image')) <p class="help-block">{{ $errors->first('image') }}</p> @endif
                     </div>
@@ -181,15 +181,15 @@
                         <div class="form-label-group">
                             Upload Book as PDF :<br>
                             <input type="file" id="bookPDF" class="form-control" name="bookPDF" required>
-                            <b>( PDF, max : 100MB )</b>
+                            <b>( PDF, max : 1000MB )</b>
                         </div>
                         @if ($errors->has('bookPDF')) <p class="help-block">{{ $errors->first('bookPDF') }}</p> @endif
                     </div>
 
                     <div class="form-group ">
                         <div class="form-label-group">
-                            <input type="text" id="keywords" class="form-control" placeholder="Keywords" name="keywords" value="{{ old('keywords') }}">
-                            <label for="keywords">Keywords</label>                         
+                            <input type="text" id="keywords" class="form-control" placeholder="Subject Headings/Keywords" name="keywords" value="{{ old('keywords') }}">
+                            <label for="keywords">Subject Headings/Keywords</label>                         
                         </div>
                     </div>
 

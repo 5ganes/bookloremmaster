@@ -205,14 +205,14 @@
                         <div class="form-label-group">
                            Change Cover Image :<br>
                            <input type="file" id="image" class="form-control" name="image">
-                           <b>( jpeg,png,jpg, max:2MB )</b>
+                           <b>( jpeg,png,jpg, max:10MB )</b>
                         </div>
                     </div>
                     <div class="form-group ">
                         <div class="form-label-group">
                             Upload New Book as PDF : ( <b>Old : {{$book->bookPDF}}</b> )<br>
                             <input type="file" id="bookPDF" class="form-control" name="bookPDF">
-                            <b>( PDF, max : 100MB )</b>
+                            <b>( PDF, max : 1000MB )</b>
                         </div>
                     </div>
 

@@ -42,7 +42,7 @@ class AuthorController extends Controller
         $v = Validator::make($request->all(),[
             'name' => 'required',
             // 'address' => 'required',
-            'image' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+            'image' => 'image|nullable|mimes:jpeg,png,jpg|max:10240'
         ]);
         if($v -> fails()){
             return redirect::back()->withErrors($v->messages())->withInput();
@@ -90,7 +90,7 @@ class AuthorController extends Controller
         $v = Validator::make($request->all(),[
             'name' => 'required',
             // 'address' => 'required',
-            'image' => 'image|nullable|mimes:jpeg,png,jpg|max:2048'
+            'image' => 'image|nullable|mimes:jpeg,png,jpg|max:10240'
         ]);
         if($v -> fails()){
             return redirect::back()->withErrors($v->messages())->withInput();
