@@ -35,6 +35,8 @@ class CreateBooksTable extends Migration
             $table->timestamps();
 
             // set foreign key
+            // $table->foreign('bookCategory')->references('id')->on('book_categories')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('bookPublisher')->references('id')->on('book_publishers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('bookCategory')->references('id')->on('book_categories')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('bookPublisher')->references('id')->on('book_publishers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

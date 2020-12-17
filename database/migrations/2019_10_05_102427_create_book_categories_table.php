@@ -14,7 +14,7 @@ class CreateBookCategoriesTable extends Migration
     public function up()
     {
         Schema::create('book_categories', function (Blueprint $table) {
-            $table->bigIncrements('id', 100);
+            $table->bigIncrements('id');
             $table->string('name');
             $table->integer('publish')->unsigned();
             // $table->rememberToken();
