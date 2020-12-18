@@ -52,8 +52,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://dell/bookmaster/public/'),
-    'adminurl' => env('APP_ADMINURL', 'http://dell/bookmaster/public/admin/'),
+    'url' => env('APP_URL', 'http://e-library/bookmaster/public/'),
+    'adminurl' => env('APP_ADMINURL', 'http://e-library/bookmaster/public/admin/'),
 
     // 'url' => env('APP_URL', 'http://192.168.1.17/bookmaster/public/'),
     // 'adminurl' => env('APP_ADMINURL', 'http://192.168.1.17/bookmaster/public/admin/'),
