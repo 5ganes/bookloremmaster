@@ -23,6 +23,8 @@
 // migrating a single table
 // php artisan migrate:refresh --path=/database/migrations/fileName.php
 
+// there is hard coded site url in public/client/bookflip/js/3dfilpbook.min.js and needs to be changed when domain changes.[it is for displaying pdf in frontend]
+
 
 /****************************** Front End Routing  ******************************************************/
     // Route::get('/', function () {
