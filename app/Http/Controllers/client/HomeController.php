@@ -107,11 +107,12 @@ class HomeController extends Controller
         }
         else{
 			$keyword = Input::get('keyword');
+			// dd($keyword);
 			$books = DB::table('books')
 					->join('book_categories', 'books.bookCategory', '=', 'book_categories.id')
 					->join('book_publishers', 'books.bookPublisher', '=', 'book_publishers.id')
-					->join('books_authors_relation', 'books.id', '=', 'books_authors_relation.bookId')
-					->join('authors', 'authors.id', '=', 'books_authors_relation.authorId')
+					// ->join('books_authors_relation', 'books.id', '=', 'books_authors_relation.bookId')
+					// ->join('authors', 'authors.id', '=', 'books_authors_relation.authorId')
 					->select('books.*')
 					->where('books.name', 'like', '%'.$keyword.'%')
 					->orWhere('books.isbn', 'like', '%'.$keyword.'%')
@@ -121,13 +122,14 @@ class HomeController extends Controller
 					->orWhere('books.keywords', 'like', '%'.$keyword.'%')
 					->orWhere('book_categories.name', 'like', '%'.$keyword.'%')
 					->orWhere('book_publishers.name', 'like', '%'.$keyword.'%')
-					->orWhere('authors.name', 'like', '%'.$keyword.'%')
+					// ->orWhere('authors.name', 'like', '%'.$keyword.'%')
 					->groupBy('books.id')
 					->get();
 			// dd($books);
 			return view('client.home')->with(array(
 				'categoryList' => $this->categoryList,
-				'featuredBooks' => $books
+				'featuredBooks' => $books,
+				'search' => 1
 			));
 		}
 	}
